@@ -41,6 +41,7 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Produk', 'url' => ['/item/index']], // Tambahkan menu Produk
+        ['label' => 'Category', 'url' => ['/item-category/index']], // Tambahkan menu Produk
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
