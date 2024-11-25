@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'name' => 'Toko Baru', // Menambahkan nama aplikasi frontend
+    'name' => 'Konsul Online', // Menambahkan nama aplikasi frontend
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
@@ -40,9 +40,13 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
+                '' => 'site/index', // Default halaman utama
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
+
     ],
     'params' => $params,
 ];

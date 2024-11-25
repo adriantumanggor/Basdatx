@@ -3,8 +3,8 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
-use backend\assets\AppAsset;
 use common\widgets\Alert;
+use backend\assets\AppAsset;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
@@ -36,6 +36,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Produk', 'url' => ['/item/index']], // Tambahkan menu Produk
         ['label' => 'Category', 'url' => ['/item-category/index']], // Tambahkan menu Produk
     ];

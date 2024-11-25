@@ -7,12 +7,44 @@ use backend\models\ItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Statistic;
 
 /**
  * ItemController implements the CRUD actions for Item model.
  */
 class ItemController extends Controller
 {
+    /**
+     * Overload beforeAction to log request information.
+     * 
+     * @param \yii\base\Action $action
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        // Panggil logRequest untuk mencatat data request
+        $this->logRequest();
+
+        // Pastikan untuk memanggil method beforeAction dari parent
+        return parent::beforeAction($action);
+    }
+
+    /**
+     * Method to log request data into the Statistic model.
+     */
+    private function logRequest()
+    {
+        $statistic = new Statistic();
+        $statistic->access_time = date('Y-m-d H:i:s'); // Current timestamp
+        $statistic->user_ip = \Yii::$app->request->userIP;
+        $statistic->user_host = gethostbyaddr(\Yii::$app->request->userIP);
+        $statistic->path_info = \Yii::$app->request->pathInfo;
+        $statistic->query_string = \Yii::$app->request->queryString;
+
+        $statistic->save();
+    
+    }
+
     /**
      * @inheritDoc
      */
@@ -60,6 +92,7 @@ class ItemController extends Controller
         ]);
     }
 
+    // Remaining actions stay the same...
     /**
      * Creates a new Item model.
      * If creation is successful, the browser will be redirected to the 'view' page.

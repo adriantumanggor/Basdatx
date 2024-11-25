@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
-    'name' => 'Admin Toko Baru', // Menambahkan nama aplikasi backend
+    'name' => 'Konsultasi Online', // Menambahkan nama aplikasi backend
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],

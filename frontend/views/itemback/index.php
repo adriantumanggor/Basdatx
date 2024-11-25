@@ -1,25 +1,25 @@
 <?php
 
-use frontend\models\ItemCategory;
+use frontend\models\Item;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var frontend\models\ItemCategorySearch $searchModel */
+/** @var frontend\models\ItemSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Item Categories';
+$this->title = 'Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="item-category-index">
+<div class="item-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Item Category', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        <?= Html::a('Create Item', ['create'], ['class' => 'btn btn-success']) ?>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -31,13 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'parent_category',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, ItemCategory $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+            'price',
+            'category_id',
+            // [
+            //     'class' => ActionColumn::className(),
+            //     'urlCreator' => function ($action, Item $model, $key, $index, $column) {
+            //         return Url::toRoute([$action, 'id' => $model->id]);
+            //      }
+            // ],
         ],
     ]); ?>
 

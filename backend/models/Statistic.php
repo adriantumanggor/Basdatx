@@ -30,12 +30,9 @@ class Statistic extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['id'], 'integer'],
-            [['access_time'], 'safe'],
-            [['user_ip'], 'string', 'max' => 20],
-            [['user_host', 'path_info', 'query_string'], 'string', 'max' => 50],
-            [['id'], 'unique'],
+            [['access_time'], 'safe'], // Validasi untuk access_time
+            [['user_ip'], 'string', 'max' => 20], // Validasi untuk user_ip
+            [['user_host', 'path_info', 'query_string'], 'string', 'max' => 50], // Validasi untuk kolom lainnya
         ];
     }
 
