@@ -2,16 +2,16 @@
 
 namespace frontend\controllers;
 
-use frontend\models\ItemCategory;
-use frontend\models\ItemCategorySearch;
+use frontend\models\Consultation;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ItemCategoryController implements the CRUD actions for ItemCategory model.
+ * ConsultationController implements the CRUD actions for Consultation model.
  */
-class ItemCategoryController extends Controller
+class ConsultationController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,27 +32,37 @@ class ItemCategoryController extends Controller
     }
 
     /**
-     * Lists all ItemCategory models.
+     * Lists all Consultation models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ItemCategorySearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Consultation::find(),
+            /*
+            'pagination' => [
+                'pageSize' => 50
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC,
+                ]
+            ],
+            */
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
-    // /**
-    //  * Displays a single ItemCategory model.
-    //  * @param int $id ID
-    //  * @return string
-    //  * @throws NotFoundHttpException if the model cannot be found
-    //  */
+    /**
+     * Displays a single Consultation model.
+     * @param int $id ID
+     * @return string
+     * @throws NotFoundHttpException if the model cannot be found
+     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -61,13 +71,13 @@ class ItemCategoryController extends Controller
     }
 
     /**
-     * Creates a new ItemCategory model.
+     * Creates a new Consultation model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new ItemCategory();
+        $model = new Consultation();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +93,7 @@ class ItemCategoryController extends Controller
     }
 
     /**
-     * Updates an existing ItemCategory model.
+     * Updates an existing Consultation model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +113,7 @@ class ItemCategoryController extends Controller
     }
 
     /**
-     * Deletes an existing ItemCategory model.
+     * Deletes an existing Consultation model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +127,15 @@ class ItemCategoryController extends Controller
     }
 
     /**
-     * Finds the ItemCategory model based on its primary key value.
+     * Finds the Consultation model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return ItemCategory the loaded model
+     * @return Consultation the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ItemCategory::findOne(['id' => $id])) !== null) {
+        if (($model = Consultation::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

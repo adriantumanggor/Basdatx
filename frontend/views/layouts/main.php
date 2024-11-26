@@ -37,8 +37,8 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Konsul', 'url' => ['/item/index']], // Tambahkan menu Produk
-        ['label' => 'Category', 'url' => ['/item-category/index']], // Tambahkan menu Produk
+        ['label' => 'List Dokter', 'url' => ['/doctors/index']], // Tambahkan menu Produk
+        ['label' => 'Konsultasi', 'url' => ['/consultation/index']], // Tambahkan menu Produk
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

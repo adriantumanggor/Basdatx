@@ -43,7 +43,6 @@ return [
             'enableStrictParsing' => false,
             'rules' => [
                 '' => 'site/index', // Default halaman utama
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
 

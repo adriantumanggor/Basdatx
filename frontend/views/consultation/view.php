@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var frontend\models\ItemCategory $model */
+/** @var frontend\models\Consultation $model */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Item Categories', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Consultations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="item-category-view">
+<div class="consultation-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,8 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'parent_category',
+            'doctor_id',
+            'pasien_nama',
+            'tanggal_konsultasi',
+            'diagnosa:ntext',
         ],
     ]) ?>
 
